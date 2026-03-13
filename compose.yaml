@@ -1,0 +1,30 @@
+services:
+  app:
+    image: local/reflex-app
+    environment:
+      DB_URL: sqlite:///data/reflex.db
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - db-data:/app/data
+    restart: always
+
+  webserver:
+    environment:
+      DOMAIN: ${DOMAIN:-localhost}
+    ports:
+      - "80:80"
+      - "443:443"
+    build:
+      context: .
+      dockerfile: Caddy.Dockerfile
+    volumes:
+      - caddy-data:/root/.caddy
+    restart: always
+    depends_on:
+      - app
+
+volumes:
+  db-data:
+  caddy-data:

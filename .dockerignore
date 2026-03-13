@@ -1,0 +1,11 @@
+.web
+.venv
+lhenv
+__pycache__
+*.py[cod]
+*.db
+.states
+.claude
+.env
+.git
+.gitignore
