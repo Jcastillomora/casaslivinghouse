@@ -8,6 +8,7 @@ class Casa(rx.Base):
     dormitorios: int
     banos: int
     precio: int
+    precio_texto: str = ""
     descripcion: str
     imagen: str  # URL externa de la imagen
     url_imagen: str  # Ruta local de la imagen

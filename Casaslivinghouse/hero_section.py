@@ -1,12 +1,17 @@
 import reflex as rx
 
 
-def hero_stat(number: str, label: str) -> rx.Component:
-    return rx.vstack(
-        rx.text(number, class_name="text-2xl md:text-3xl font-bold text-teal-400"),
-        rx.text(label, class_name="text-xs md:text-sm text-slate-400 text-center"),
-        align="center",
-        spacing="1",
+def hero_stat(number: str, label: str, icon: str, bg: str) -> rx.Component:
+    return rx.box(
+        rx.box(
+            rx.icon(icon, size=22, color="white"),
+            class_name=f"w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 {bg}",
+        ),
+        rx.box(
+            rx.text(number, class_name="text-2xl md:text-3xl font-black text-white leading-none"),
+            rx.text(label, class_name="text-xs text-slate-400 mt-1 whitespace-nowrap"),
+        ),
+        class_name="flex flex-row items-center gap-3",
     )
 
 
@@ -35,16 +40,15 @@ def hero_section():
                             class_name="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight",
                         ),
                         rx.text(
-                            "Somos una empresa del centro sur de Chile, dedicada al desarrollo inmobiliario "
-                            "y al apoyo de las familias para conseguir el sueño de la casa propia, "
-                            "de la segunda vivienda o para la creación de proyectos turísticos.",
-                            class_name="text-slate-300 text-base md:text-lg leading-relaxed max-w-xl",
+                            "Somos Casas Prefabricadas Living House ¡Gracias a Dios! "
+                            "Una empresa que te acompaña en cada uno de tus sueños.",
+                            class_name="text-white/90 text-base md:text-lg leading-relaxed max-w-xl",
                         ),
                         rx.hstack(
                             rx.icon("heart", size=16, color="#5eead4"),
                             rx.text(
                                 "Empresa de inspiración Cristiana, de confianza y cara a la ciudadanía.",
-                                class_name="text-teal-300 font-semibold text-sm md:text-base",
+                                class_name="text-white/85 font-semibold text-sm md:text-base",
                             ),
                             spacing="2",
                             align="center",
@@ -81,17 +85,28 @@ def hero_section():
                         align_items="start",
                         class_name="py-10 lg:py-16",
                     ),
-                    # Columna derecha – imagen
+                    # Columna derecha – slider de imágenes
                     rx.box(
-                        rx.image(
-                            src="/foto_sección 1.jpg",
-                            alt="Casa prefabricada Living House",
-                            width="100%",
-                            height="100%",
-                            object_fit="cover",
-                            class_name="brightness-110",
+                        rx.box(
+                            rx.box(
+                                rx.image(src="/volcan_osorno_137.jpg", alt="Casa Volcán Osorno 137m²"),
+                                class_name="hero-slide-item",
+                            ),
+                            rx.box(
+                                rx.image(src="/7lagos_108.jpg", alt="Casa 7 Lagos 108m²"),
+                                class_name="hero-slide-item",
+                            ),
+                            rx.box(
+                                rx.image(src="/foto_sección 1.jpg", alt="Casa Living House"),
+                                class_name="hero-slide-item",
+                            ),
+                            rx.box(
+                                rx.image(src="/puerto_octay_90.jpg", alt="Casa Puerto Octay 90m²"),
+                                class_name="hero-slide-item",
+                            ),
+                            class_name="hero-slider-track",
                         ),
-                        class_name="rounded-2xl overflow-hidden shadow-2xl shadow-black/40 min-h-[320px] md:min-h-[440px]",
+                        class_name="hero-slider-container shadow-2xl shadow-black/40",
                     ),
                     columns=rx.breakpoints(initial="1", md="2"),
                     gap="10",
@@ -102,32 +117,19 @@ def hero_section():
             # Stats bar
             rx.box(
                 rx.box(
-                    rx.flex(
-                        hero_stat("50+", "Modelos disponibles"),
-                        rx.divider(
-                            orientation="vertical",
-                            class_name="h-10 bg-white/15",
-                        ),
-                        hero_stat("10+", "Años de experiencia"),
-                        rx.divider(
-                            orientation="vertical",
-                            class_name="h-10 bg-white/15",
-                        ),
-                        hero_stat("100%", "Crédito Directo"),
-                        rx.divider(
-                            orientation="vertical",
-                            class_name="h-10 bg-white/15",
-                        ),
-                        hero_stat("Sin DICOM", "Evaluación flexible"),
-                        justify="center",
-                        align="center",
-                        gap="8",
-                        wrap="wrap",
-                        class_name="py-6 px-4",
+                    rx.box(
+                        hero_stat("20+", "Modelos disponibles", "building-2", "bg-purple-500/30"),
+                        rx.box(class_name="w-px h-10 bg-white/20 hidden sm:block"),
+                        hero_stat("5+", "Años de experiencia", "calendar", "bg-yellow-500/30"),
+                        rx.box(class_name="w-px h-10 bg-white/20 hidden sm:block"),
+                        hero_stat("100%", "Crédito Directo", "banknote", "bg-teal-500/30"),
+                        rx.box(class_name="w-px h-10 bg-white/20 hidden sm:block"),
+                        hero_stat("Sin DICOM", "Evaluación flexible", "shield-check", "bg-sky-500/30"),
+                        class_name="flex flex-row items-center justify-center gap-6 md:gap-10 py-6",
                     ),
                     class_name="max-w-4xl mx-auto",
                 ),
-                class_name="bg-slate-800/60 border-t border-white/10 mt-4",
+                class_name="stats-bar-animated border-t border-white/10 mt-4",
             ),
             class_name="bg-gradient-to-br from-slate-900 via-teal-950/80 to-slate-900",
         ),

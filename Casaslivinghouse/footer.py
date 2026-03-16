@@ -24,7 +24,7 @@ def footer_item(text: str, href: str) -> rx.Component:
     return rx.link(
         rx.text(text, size="3"),
         href=href,
-        class_name="text-slate-400 hover:text-teal-400 transition-colors duration-200",
+        class_name="text-teal-100 hover:text-white transition-colors duration-200",
     )
 
 
@@ -35,7 +35,7 @@ def footer_items_1() -> rx.Component:
             size="4",
             weight="bold",
             as_="h3",
-            class_name="text-slate-500 mb-2",
+            class_name="text-white font-bold mb-2",
         ),
         rx.box(
             rx.html(
@@ -47,7 +47,7 @@ def footer_items_1() -> rx.Component:
             rx.icon("map-pinned", size=20, color="crimson"),
             rx.text(
                 "Arturo Prat N° 696, oficina 316, Temuco",
-                class_name="text-slate-400 text-sm",
+                class_name="text-teal-50 text-sm",
             ),
             spacing="2",
             align="center",
@@ -65,7 +65,7 @@ def footer_items_2() -> rx.Component:
             size="4",
             weight="bold",
             as_="h3",
-            class_name="text-slate-500 mb-2",
+            class_name="text-white font-bold mb-2",
         ),
         rx.box(
             rx.html(
@@ -77,7 +77,7 @@ def footer_items_2() -> rx.Component:
             rx.icon("map-pinned", size=20, color="crimson"),
             rx.text(
                 "Ruta T 75 KM 35 Sector Puerto Nuevo, La Unión",
-                class_name="text-slate-400 text-sm",
+                class_name="text-teal-50 text-sm",
             ),
             spacing="2",
             align="center",
@@ -108,11 +108,11 @@ def socials() -> rx.Component:
             "Síguenos",
             size="3",
             weight="bold",
-            class_name="text-slate-500 uppercase tracking-wider text-xs mb-1",
+            class_name="text-white uppercase tracking-wider text-xs mb-1 font-bold",
         ),
         rx.hstack(
             rx.vstack(
-                rx.text("TikTok", class_name="text-slate-500 text-xs"),
+                rx.text("TikTok", class_name="text-teal-100 text-xs"),
                 social_link(
                     "/tik tok.png",
                     "https://www.tiktok.com/@casaslivinghouse?lang=es",
@@ -122,7 +122,7 @@ def socials() -> rx.Component:
                 spacing="1",
             ),
             rx.vstack(
-                rx.text("Facebook", class_name="text-slate-500 text-xs"),
+                rx.text("Facebook", class_name="text-teal-100 text-xs"),
                 social_link(
                     "/facebook.png",
                     "https://www.facebook.com/casas.living.house.casasprefabricadas/",
@@ -132,7 +132,7 @@ def socials() -> rx.Component:
                 spacing="1",
             ),
             rx.vstack(
-                rx.text("Instagram", class_name="text-slate-500 text-xs"),
+                rx.text("Instagram", class_name="text-teal-100 text-xs"),
                 social_link(
                     "/instagram.png",
                     "https://www.instagram.com/casasprefabricadaslivinghouse/",
@@ -169,7 +169,7 @@ def footer() -> rx.Component:
                     ),
                     rx.text(
                         "Empresa del centro sur de Chile dedicada al desarrollo inmobiliario y al sueño de la casa propia.",
-                        class_name="text-slate-400 text-sm leading-relaxed max-w-xs",
+                        class_name="text-teal-50 text-sm leading-relaxed max-w-xs",
                     ),
                     socials(),
                     spacing="5",
@@ -187,7 +187,7 @@ def footer() -> rx.Component:
             rx.flex(
                 rx.text(
                     "© 2026 Casas Prefabricadas Living House — Todos los derechos reservados",
-                    class_name="text-slate-500 text-sm text-center",
+                    class_name="text-teal-100 text-sm text-center",
                 ),
                 justify="center",
                 width="100%",
@@ -195,5 +195,8 @@ def footer() -> rx.Component:
             class_name="max-w-7xl mx-auto px-6 lg:px-8 py-12",
         ),
         width="100%",
-        class_name="bg-[#5eead4] border-t border-slate-800",
+        class_name="border-t border-teal-900/60",
+        style={
+            "background": "linear-gradient(180deg, #134e4a 0%, #0d9488 60%, #14b8a6 100%)",
+        },
     )

@@ -22,3 +22,8 @@ env/
 # OS
 .DS_Store
 Thumbs.db
+
+# Large media files (host externally)
+*.mp4
+*.mov
+*.avi

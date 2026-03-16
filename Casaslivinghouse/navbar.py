@@ -7,7 +7,7 @@ def navbar_icons_item(text: str, icon: str, url: str) -> rx.Component:
         rx.hstack(
             rx.icon(icon, size=16),
             rx.text(text, size="3", weight="medium"),
-            class_name="text-white hover:text-teal-400 transition-colors duration-200",
+            class_name="text-white/90 hover:text-white transition-colors duration-200",
             spacing="2",
         ),
         href=url,
@@ -37,7 +37,7 @@ def navbar_icons() -> rx.Component:
                         height="46px",
                         border_radius="50%",
                         object_fit="cover",
-                        class_name="ring-2 ring-teal-500/40",
+                        class_name="ring-2 ring-white/40 shadow-md",
                     ),
                     loading_card(),
                     align_items="center",
@@ -45,10 +45,10 @@ def navbar_icons() -> rx.Component:
                 ),
                 # Links
                 rx.hstack(
-                    navbar_icons_item("Inicio", "home", "/#"),
-                    navbar_icons_item("Nosotros", "users", "/#"),
-                    navbar_icons_item("Modelos", "building-2", "/#"),
-                    navbar_icons_item("Contacto", "mail", "/#"),
+                    navbar_icons_item("Inicio", "home", "/#inicio"),
+                    navbar_icons_item("Nosotros", "users", "/#nosotros"),
+                    navbar_icons_item("Modelos", "building-2", "/#modelos"),
+                    navbar_icons_item("Contacto", "mail", "/#contacto"),
                     spacing="8",
                 ),
                 # CTA button
@@ -56,7 +56,7 @@ def navbar_icons() -> rx.Component:
                     rx.button(
                         rx.icon("phone", size=15),
                         "+56 9 3075 4516",
-                        class_name="bg-teal-500 hover:bg-teal-400 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200 flex items-center gap-2 shadow-lg shadow-teal-500/20",
+                        class_name="bg-white text-teal-700 hover:bg-teal-50 text-sm font-bold px-4 py-2 rounded-xl transition-all duration-200 flex items-center gap-2 shadow-md",
                         size="2",
                     ),
                     href="https://wa.me/56930754516",
@@ -76,7 +76,7 @@ def navbar_icons() -> rx.Component:
                         height="40px",
                         border_radius="50%",
                         object_fit="cover",
-                        class_name="ring-2 ring-teal-500/40",
+                        class_name="ring-2 ring-white/40",
                     ),
                     loading_card(),
                     align_items="center",
@@ -86,15 +86,15 @@ def navbar_icons() -> rx.Component:
                     rx.menu.trigger(
                         rx.box(
                             rx.icon("menu", size=22, color="white"),
-                            class_name="p-2 rounded-lg hover:bg-white/10 transition-colors cursor-pointer",
+                            class_name="p-2 rounded-lg hover:bg-white/15 transition-colors cursor-pointer",
                         )
                     ),
                     rx.menu.content(
-                        navbar_icons_menu_item("Inicio", "home", "/#"),
-                        navbar_icons_menu_item("Nosotros", "users", "/#"),
-                        navbar_icons_menu_item("Modelos", "building-2", "/#"),
-                        navbar_icons_menu_item("Contacto", "mail", "/#"),
-                        class_name="bg-[#5eead4]",
+                        navbar_icons_menu_item("Inicio", "home", "/#inicio"),
+                        navbar_icons_menu_item("Nosotros", "users", "/#nosotros"),
+                        navbar_icons_menu_item("Modelos", "building-2", "/#modelos"),
+                        navbar_icons_menu_item("Contacto", "mail", "/#contacto"),
+                        class_name="bg-white border border-teal-100 shadow-xl",
                     ),
                 ),
                 justify="between",
@@ -102,9 +102,11 @@ def navbar_icons() -> rx.Component:
                 width="100%",
             ),
         ),
-        # position="sticky",
         top="0",
         z_index="50",
         width="100%",
-        class_name="px-4 py-3 bg-[#5eead4] backdrop-blur-sm border-b border-white/10 shadow-xl",
+        class_name="px-4 py-3 border-b border-teal-700/30 shadow-lg",
+        style={
+            "background": "linear-gradient(135deg, #0d9488 0%, #14b8a6 60%, #0f766e 100%)",
+        },
     )

@@ -15,6 +15,7 @@ class State(rx.State):
     data_loaded: bool = False
 
     search_term_casas: str = ""
+    current_casa_id: str = ""
     min_superficie: int = 18
     max_superficie: int = 137
     min_precio: int = 1000000
@@ -104,6 +105,12 @@ class State(rx.State):
             )
             df["plano"] = df["plano"].fillna("").replace("nan", "")
 
+            def fmt_precio(p: int) -> str:
+                if p == 0:
+                    return "Consultar precio"
+                return f"${p:,}".replace(",", ".")
+
+            df["precio_texto"] = df["precio"].apply(fmt_precio)
             self.casas = [Casa(**row.to_dict()) for _, row in df.iterrows()]
             self.total_casas = len(self.casas)
 
@@ -150,6 +157,44 @@ class State(rx.State):
             if precios:
                 self.min_precio = min(precios)
                 self.max_precio = max(precios)
+
+    def load_casa_detail(self):
+        """Carga el detalle de una casa desde los parámetros de la URL."""
+        self.current_casa_id = self.router.page.params.get("casa_id", "")
+        if not self.data_loaded:
+            yield State.load_casas
+
+    def navigate_to_casa(self, casa_id: int):
+        """Navega a la página de detalle de una casa."""
+        return rx.redirect(f"/casa/{casa_id}#detalle")
+
+    @rx.var(cache=True)
+    def current_casa(self) -> Casa:
+        """Retorna la casa actual según el parámetro de URL."""
+        for casa in self.casas:
+            if str(casa.id) == self.current_casa_id:
+                return casa
+        return Casa(
+            id=0,
+            modelo="",
+            superficie_m2=0,
+            dormitorios=0,
+            banos=0,
+            precio=0,
+            precio_texto="",
+            descripcion="",
+            imagen="",
+            url_imagen="/casa_default.jpg",
+            plano="",
+        )
+
+    @rx.var(cache=True)
+    def current_casa_precio_texto(self) -> str:
+        """Precio de la casa actual formateado en formato chileno."""
+        precio = self.current_casa.precio
+        if precio == 0:
+            return "Consultar precio"
+        return f"${precio:,}".replace(",", ".")
 
     @rx.var(cache=True)
     def filtered_casas(self) -> list[Casa]:
