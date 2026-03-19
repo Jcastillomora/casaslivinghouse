@@ -2,6 +2,16 @@ import reflex as rx
 from .footer import loading_card
 
 
+class NavbarState(rx.State):
+    menu_open: bool = False
+
+    def toggle_menu(self):
+        self.menu_open = not self.menu_open
+
+    def close_menu(self):
+        self.menu_open = False
+
+
 def navbar_icons_item(text: str, icon: str, url: str) -> rx.Component:
     return rx.link(
         rx.hstack(
@@ -14,14 +24,17 @@ def navbar_icons_item(text: str, icon: str, url: str) -> rx.Component:
     )
 
 
-def navbar_icons_menu_item(text: str, icon: str, url: str) -> rx.Component:
+def mobile_menu_item(text: str, icon: str, url: str) -> rx.Component:
     return rx.link(
         rx.hstack(
-            rx.icon(icon, size=16),
-            rx.text(text, size="3", weight="medium"),
-            class_name="text-slate-700 hover:text-teal-600 transition-colors",
+            rx.icon(icon, size=18),
+            rx.text(text, size="4", weight="medium"),
+            class_name="text-white/90 hover:text-white transition-colors duration-200",
+            spacing="3",
         ),
         href=url,
+        on_click=NavbarState.close_menu,
+        class_name="block w-full py-3 px-6 border-b border-teal-700/30 hover:bg-teal-700/30 transition-colors",
     )
 
 
@@ -68,37 +81,60 @@ def navbar_icons() -> rx.Component:
             ),
         ),
         rx.mobile_and_tablet(
-            rx.hstack(
+            rx.vstack(
+                # Top bar: logo + hamburger
                 rx.hstack(
-                    rx.image(
-                        src="/casaslivinghouse.jpg",
-                        width="40px",
-                        height="40px",
-                        border_radius="50%",
-                        object_fit="cover",
-                        class_name="ring-2 ring-white/40",
+                    rx.hstack(
+                        rx.image(
+                            src="/casaslivinghouse.jpg",
+                            width="40px",
+                            height="40px",
+                            border_radius="50%",
+                            object_fit="cover",
+                            class_name="ring-2 ring-white/40",
+                        ),
+                        loading_card(),
+                        align_items="center",
+                        spacing="2",
                     ),
-                    loading_card(),
-                    align_items="center",
-                    spacing="2",
-                ),
-                rx.menu.root(
-                    rx.menu.trigger(
-                        rx.box(
+                    rx.box(
+                        rx.cond(
+                            NavbarState.menu_open,
+                            rx.icon("x", size=22, color="white"),
                             rx.icon("menu", size=22, color="white"),
-                            class_name="p-2 rounded-lg hover:bg-white/15 transition-colors cursor-pointer",
-                        )
+                        ),
+                        on_click=NavbarState.toggle_menu,
+                        class_name="p-2 rounded-lg hover:bg-white/15 transition-colors cursor-pointer",
                     ),
-                    rx.menu.content(
-                        navbar_icons_menu_item("Inicio", "home", "/#inicio"),
-                        navbar_icons_menu_item("Nosotros", "users", "/#nosotros"),
-                        navbar_icons_menu_item("Modelos", "building-2", "/#modelos"),
-                        navbar_icons_menu_item("Contacto", "mail", "/#contacto"),
-                        class_name="bg-white border border-teal-100 shadow-xl",
-                    ),
+                    justify="between",
+                    align_items="center",
+                    width="100%",
                 ),
-                justify="between",
-                align_items="center",
+                # Dropdown inline — same gradient, no overflow
+                rx.cond(
+                    NavbarState.menu_open,
+                    rx.box(
+                        mobile_menu_item("Inicio", "home", "/#inicio"),
+                        mobile_menu_item("Nosotros", "users", "/#nosotros"),
+                        mobile_menu_item("Modelos", "building-2", "/#modelos"),
+                        mobile_menu_item("Contacto", "mail", "/#contacto"),
+                        rx.link(
+                            rx.hstack(
+                                rx.icon("phone", size=18),
+                                rx.text("+56 9 3075 4516", size="4", weight="medium"),
+                                class_name="text-white/90 hover:text-white transition-colors duration-200",
+                                spacing="3",
+                            ),
+                            href="https://wa.me/56930754516",
+                            is_external=True,
+                            on_click=NavbarState.close_menu,
+                            class_name="block w-full py-3 px-6 hover:bg-teal-700/30 transition-colors",
+                        ),
+                        class_name="w-full border-t border-teal-700/30",
+                    ),
+                    rx.box(),
+                ),
+                spacing="0",
                 width="100%",
             ),
         ),

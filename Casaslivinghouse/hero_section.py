@@ -47,7 +47,7 @@ def hero_section():
                         rx.hstack(
                             rx.icon("heart", size=16, color="#5eead4"),
                             rx.text(
-                                "Empresa de inspiración Cristiana, de confianza y cara a la ciudadanía.",
+                                "Empresa de inspiración Cristiana somos confianza, somos realidad.",
                                 class_name="text-white/85 font-semibold text-sm md:text-base",
                             ),
                             spacing="2",
@@ -106,7 +106,16 @@ def hero_section():
                             ),
                             class_name="hero-slider-track",
                         ),
+                        rx.box(class_name="hero-slide-overlay"),
                         class_name="hero-slider-container shadow-2xl shadow-black/40",
+                    ),
+                    # Dot indicators
+                    rx.box(
+                        rx.box(class_name="hero-dot hero-dot-1"),
+                        rx.box(class_name="hero-dot hero-dot-2"),
+                        rx.box(class_name="hero-dot hero-dot-3"),
+                        rx.box(class_name="hero-dot hero-dot-4"),
+                        class_name="hero-dots mt-3",
                     ),
                     columns=rx.breakpoints(initial="1", md="2"),
                     gap="10",
@@ -119,47 +128,19 @@ def hero_section():
                 rx.box(
                     rx.box(
                         hero_stat("20+", "Modelos disponibles", "building-2", "bg-purple-500/30"),
-                        rx.box(class_name="w-px h-10 bg-white/20 hidden sm:block"),
+                        rx.box(class_name="hidden md:block w-px h-10 bg-white/20"),
                         hero_stat("5+", "Años de experiencia", "calendar", "bg-yellow-500/30"),
-                        rx.box(class_name="w-px h-10 bg-white/20 hidden sm:block"),
+                        rx.box(class_name="hidden md:block w-px h-10 bg-white/20"),
                         hero_stat("100%", "Crédito Directo", "banknote", "bg-teal-500/30"),
-                        rx.box(class_name="w-px h-10 bg-white/20 hidden sm:block"),
+                        rx.box(class_name="hidden md:block w-px h-10 bg-white/20"),
                         hero_stat("Sin DICOM", "Evaluación flexible", "shield-check", "bg-sky-500/30"),
-                        class_name="flex flex-row items-center justify-center gap-6 md:gap-10 py-6",
+                        class_name="grid grid-cols-2 md:flex md:flex-row items-center justify-center gap-6 md:gap-10 py-6 px-4",
                     ),
                     class_name="max-w-4xl mx-auto",
                 ),
                 class_name="stats-bar-animated border-t border-white/10 mt-4",
             ),
             class_name="bg-gradient-to-br from-slate-900 via-teal-950/80 to-slate-900",
-        ),
-
-        # ── Sección CTA ──────────────────────────────────────────────────────
-        rx.box(
-            rx.box(
-                rx.vstack(
-                    rx.text(
-                        "No esperes más",
-                        class_name="text-teal-600 font-semibold text-base md:text-lg text-center",
-                    ),
-                    rx.heading(
-                        "Inicia el proceso con Casas Living House",
-                        class_name="text-2xl md:text-4xl font-bold text-slate-800 text-center leading-snug",
-                    ),
-                    rx.text(
-                        "Si cuentas con un diseño preliminar pero no sabes cómo continuar en el proceso de "
-                        "construcción de tu nuevo hogar, nuestro equipo te guiará de manera clara y sencilla "
-                        "en las etapas necesarias para concretar tu proyecto. Con Benhaus tendrás seguridad "
-                        "y certeza en el desarrollo del proyecto.",
-                        class_name="text-slate-600 text-center leading-relaxed max-w-3xl text-sm md:text-base",
-                    ),
-                    spacing="5",
-                    align="center",
-                    class_name="py-12 px-6",
-                ),
-                class_name="max-w-5xl mx-auto",
-            ),
-            class_name="bg-gradient-to-r from-teal-50 to-cyan-50 border-y border-teal-100",
         ),
 
         width="100%",

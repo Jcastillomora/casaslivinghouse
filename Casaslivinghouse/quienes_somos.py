@@ -8,6 +8,11 @@ TEAM = [
         "imagen": "/Alexander Saez.jpeg",
         "linkedin": "https://www.linkedin.com/in/alexander-s%C3%A1ez-jorquera-865b34149/",
         "whatsapp": "https://wa.me/56930754516",
+        "descripcion": [
+            "Su CEO fue asesor jurídico en el Ministerio de Obras Públicas, y en el Departamento de Recursos Físicos encargado de las obras de construcción del Ministerio de Salud.",
+            "En el ámbito privado, también ha estado vinculado al mercado inmobiliario y en cooperativas para la vivienda, logrando experiencia tanto en materia de inversión inmobiliaria y construcción.",
+            "También cuenta con experiencia en el área de la docencia como profesor de Derecho Inmobiliario, formando y preparando agentes inmobiliarios a lo largo de Chile.",
+        ],
     },
     {
         "nombre": "Juan Carlos García",
@@ -15,6 +20,9 @@ TEAM = [
         "imagen": "/Juan Carlos Garcia.jpeg",
         "linkedin": "https://www.linkedin.com",
         "whatsapp": "https://wa.me/56962822333",
+        "descripcion": [
+            "Nuestro Agente Inmobiliario tiene experiencia como corredor de propiedades, asesor de inversión inmobiliaria, marketing digital, manejo de Post Venta y Técnico Jurídico con vasta experiencia en el área de cobranza y recuperos.",
+        ],
     },
 ]
 
@@ -71,6 +79,20 @@ def team_card(member: dict) -> rx.Component:
             align="center",
         ),
 
+        # Descripción
+        rx.vstack(
+            *[
+                rx.text(
+                    p,
+                    class_name="text-slate-600 text-sm leading-relaxed text-center",
+                )
+                for p in member["descripcion"]
+            ],
+            spacing="3",
+            align="center",
+            class_name="max-w-sm",
+        ),
+
         # Iconos sociales
         rx.hstack(
             rx.link(
@@ -117,6 +139,14 @@ def quienes_somos() -> rx.Component:
                         "Somos una empresa del centro sur de Chile dedicada al desarrollo inmobiliario y al apoyo de las familias para conseguir el sueño de la casa propia, de la segunda vivienda o para la creación de proyectos turísticos donde la construcción de viviendas de calidad es nuestra mayor preocupación.",
                         class_name="text-slate-600 text-center leading-relaxed",
                     ),
+                    rx.text(
+                        "Somos una empresa que nace para aportar al cumplimiento de los sueños de sus clientes, en base a la experiencia de su equipo directivo y de sus colaboradores.",
+                        class_name="text-slate-600 text-center leading-relaxed mt-4",
+                    ),
+                    rx.text(
+                        "Su equipo cuenta con basta experiencia en el sector público y privado.",
+                        class_name="text-slate-600 text-center leading-relaxed mt-2",
+                    ),
                     rx.hstack(
                         rx.icon("heart", size=15, color="#0d9488"),
                         rx.text(
@@ -138,7 +168,7 @@ def quienes_somos() -> rx.Component:
             # Tarjetas del equipo
             rx.flex(
                 *[team_card(m) for m in TEAM],
-                class_name="flex-col sm:flex-row items-center justify-center gap-16 md:gap-24",
+                class_name="flex-col sm:flex-row items-start justify-center gap-16 md:gap-20",
             ),
 
             class_name="max-w-7xl mx-auto px-6 lg:px-8 py-20",

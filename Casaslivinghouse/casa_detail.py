@@ -12,8 +12,7 @@ KIT_INCLUYE = [
     (
         "TECHUMBRE",
         [
-            "Zinc 0,35 mm en diferentes medidas según modelo, caballetes de 40 cm de anchura y costaneras en 2x2 a 80 cm entre unas y otras.",
-            "Fieltro asfáltico 10/40 en rollos como aislante de humedad (los lima hoyas se incluyen en los modelos que lo requieran).",
+            "Un kit básico o inicial incluye zinc en 0,35 mm de espesor en diferentes medidas según requiera el modelo, caballetes de 40 cm de anchura y costaneras en 2x2 a 80 cm entre unas y otras. Además, fieltro asfáltico 10/40 en rollos como aislante de humedad. (los lima hoyas se incluyen en los modelos que lo requieran)",
         ],
     ),
     (
@@ -54,7 +53,7 @@ KIT_NO_INCLUYE = [
 KIT_ADICIONAL = [
     'Kit de ventanas (línea 15, incluye premarcos cepillados en tabla de 1x4")',
     "Kit de puertas (interior en terciado de 70 cm, exterior en pino o pino Oregón 80cm; incluye todos los marcos, no incluye chapas ni bisagras)",
-    "Kit de piso (apoyos cemento 40 cm cada 1,5 mt, vigas centrales 2x6, cadenas en 2x4, terciado estructural 18mm, fieltro, fijaciones)",
+    "Kit de piso (apoyos cemento 30 cm cada 1,5 mt, envigado 2x5 y 2x4, terciado estructural 18mm, fieltro, fijaciones)",
     "Kit de cierre de aleros (tapacanes 1x8 y 1x4, listones 1x3 bruto, cortes de tinglado + 38 cm., fijaciones)",
 ]
 

@@ -33,7 +33,7 @@ PASOS = [
     },
     {
         "numero": "06",
-        "titulo": "Montamos tu hogar",
+        "titulo": "Montamos tu hogar si contratas también este servicio adicional.",
         "descripcion": "Nuestro equipo realiza el montaje y en pocas semanas tienes tu casa lista para vivir.",
         "icono": "key",
     },

@@ -108,6 +108,10 @@ def productos_credito_section():
                     ),
                     rx.text(
                         "Financia tu casa directamente con nosotros, sin intermediarios bancarios.",
+                        class_name="text-white/80 text-sm leading-relaxed mb-2",
+                    ),
+                    rx.text(
+                        "Evaluamos caso a caso. Si no tienes el PIE mínimo, paga tu pié en cuotas, y programamos la entrega diferida de tu vivienda.",
                         class_name="text-white/80 text-sm leading-relaxed mb-6",
                     ),
                     rx.vstack(
@@ -124,11 +128,6 @@ def productos_credito_section():
                         rx.hstack(
                             rx.icon("check-circle", size=16, color="white"),
                             rx.text("Evaluación personalizada", class_name="text-white text-sm"),
-                            spacing="2", align="center",
-                        ),
-                        rx.hstack(
-                            rx.icon("check-circle", size=16, color="white"),
-                            rx.text("Compatible con subsidios habitacionales", class_name="text-white text-sm"),
                             spacing="2", align="center",
                         ),
                         spacing="3",
@@ -155,7 +154,7 @@ def productos_credito_section():
                 rx.box(
                     credito_feature(
                         "shield-check",
-                        "Sin DICOM",
+                        "Con o Sin DICOM",
                         "Evaluamos cada caso de forma flexible y personalizada, sin importar tu historial crediticio.",
                     ),
                     credito_feature(
@@ -304,47 +303,48 @@ def casas_page():
                 align_items="start",
                 class_name="mb-8",
             ),
-            class_name="max-w-7xl mx-auto px-6 lg:px-8 pt-12",
+            class_name="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12",
         ),
 
         # Barra de filtros
         rx.box(
             rx.box(
+                # Búsqueda: ocupa todo el ancho
                 rx.hstack(
-                    rx.hstack(
-                        rx.icon("search", size=17, color="#94a3b8"),
-                        rx.input(
-                            placeholder="Buscar por modelo o descripción...",
-                            value=State.search_term_casas,
-                            on_change=State.set_search_term_casas,
-                            size="3",
-                            class_name="border-none outline-none bg-transparent text-slate-700 placeholder-slate-400 flex-1 min-w-0",
-                            variant="soft",
-                        ),
-                        class_name="flex-1 min-w-0",
-                        spacing="3",
-                        align="center",
+                    rx.icon("search", size=17, color="#94a3b8"),
+                    rx.input(
+                        placeholder="Buscar por modelo o descripción...",
+                        value=State.search_term_casas,
+                        on_change=State.set_search_term_casas,
+                        size="3",
+                        class_name="border-none outline-none bg-transparent text-slate-700 placeholder-slate-500 flex-1 min-w-0",
+                        variant="soft",
                     ),
-                    rx.divider(orientation="vertical", class_name="h-6 bg-slate-200"),
+                    class_name="flex-1 min-w-0",
+                    spacing="2",
+                    align="center",
+                ),
+                # Resultados + Limpiar: fila separada en mobile, inline en sm+
+                rx.hstack(
                     rx.text(
                         f"{State.filtered_casas_count} resultados",
-                        class_name="text-sm text-slate-400 whitespace-nowrap font-medium",
+                        class_name="text-xs text-slate-400 whitespace-nowrap font-medium flex-1 sm:flex-none",
                     ),
                     rx.button(
                         rx.icon("x", size=14),
                         "Limpiar",
                         on_click=State.reset_filters,
-                        class_name="text-sm text-slate-500 hover:text-red-500 transition-colors rounded-lg px-3 py-1.5",
+                        class_name="text-xs text-slate-500 hover:text-red-500 transition-colors rounded-lg px-2 py-1",
                         variant="ghost",
                         size="2",
                     ),
                     align="center",
-                    spacing="4",
-                    width="100%",
+                    spacing="2",
+                    class_name="sm:border-l sm:border-slate-200 sm:pl-3",
                 ),
-                class_name="bg-white rounded-2xl shadow-sm border border-slate-200 px-5 py-3 w-full max-w-2xl mx-auto",
+                class_name="bg-white rounded-2xl shadow-sm border border-slate-200 px-4 sm:px-5 py-3 w-full max-w-2xl mx-auto flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3",
             ),
-            class_name="max-w-7xl mx-auto px-6 lg:px-8 mb-8",
+            class_name="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8",
         ),
 
         # Grid de casas
@@ -362,7 +362,7 @@ def casas_page():
                                 State.filtered_casas,
                                 lambda casa: card_component(casa),
                             ),
-                            class_name="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-12 px-6 lg:px-8 max-w-7xl mx-auto",
+                            class_name="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto",
                         ),
                         width="100%",
                     ),

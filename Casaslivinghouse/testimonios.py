@@ -8,6 +8,28 @@ VIDEOS = [
 ]
 
 
+def tiktok_embed_card() -> rx.Component:
+    return rx.box(
+        rx.el.iframe(
+            src="https://www.tiktok.com/embed/v2/7594979573838728469",
+            allow="encrypted-media",
+            allow_full_screen=True,
+            scrolling="no",
+            style={"border": "none", "width": "100%", "height": "100%"},
+        ),
+        class_name="rounded-2xl overflow-hidden bg-slate-900 shadow-xl transition-all duration-300 mx-auto",
+        style={
+            "width": "325px",
+            "height": "735px",
+            "box_shadow": "0 8px 32px rgba(0,0,0,0.6)",
+            "_hover": {
+                "box_shadow": "0 12px 40px rgba(20,184,166,0.25), 0 8px 32px rgba(0,0,0,0.6)",
+                "transform": "translateY(-4px)",
+            },
+        },
+    )
+
+
 def video_card(v: dict) -> rx.Component:
     return rx.box(
         rx.el.video(
@@ -86,6 +108,12 @@ def testimonios_section() -> rx.Component:
             rx.box(
                 *[video_card(v) for v in VIDEOS],
                 class_name="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5",
+            ),
+
+            # TikTok embed destacado
+            rx.box(
+                tiktok_embed_card(),
+                class_name="mt-8",
             ),
 
             # Botón ver más
