@@ -27,3 +27,9 @@ Thumbs.db
 *.mp4
 *.mov
 *.avi
+
+# Assets — fotos, catálogo y planos (cargar manualmente)
+assets/*.jpg
+assets/*.jpeg
+assets/*.xlsx
+assets/*.pdf

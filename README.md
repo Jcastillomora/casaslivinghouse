@@ -49,7 +49,49 @@ reflex init
 
 Este comando instala las dependencias de Node.js y genera la carpeta `.web/` (frontend compilado).
 
-### 5. Cargar datos iniciales
+### 5. Agregar assets manualmente
+
+Los archivos de media **no están incluidos en el repositorio** (imágenes, videos y catálogo). Deben colocarse en la carpeta `assets/` antes de ejecutar el proyecto.
+
+**Catálogo de modelos** (obligatorio):
+```
+assets/Catálogo .xlsx
+```
+Debe contener la hoja `Hoja 1` con las columnas:
+`id | modelo | superficie(m2) | dormitorios | baños | precio | descripción | imagen | url_imagen | plano`
+
+**Imágenes de modelos:**
+```
+assets/lago_ranco_54.jpg
+assets/7lagos_108.jpg
+assets/volcan_osorno_137.jpg
+assets/volcan_osorno_124.jpg
+assets/volcan_osorno_150.jpg (o .pdf)
+assets/puerto_octay_54.jpg
+assets/puerto_octay_72.jpg
+assets/puerto_octay_90.jpg
+assets/puerto_varas_60.jpg
+assets/puerto_varas_80.jpg
+assets/puertonuevo_1a_36.jpg
+assets/puertonuevo_2a_54.jpg
+assets/foto_sección 1.jpg
+```
+
+**Fotos del equipo:**
+```
+assets/Alexander Saez.jpeg
+assets/Juan Carlos Garcia.jpeg
+```
+
+**Videos testimoniales:**
+```
+assets/testimonio1.mp4
+assets/testimonio2.mp4
+assets/testimonio3.mp4
+assets/testimonio4.mp4
+```
+
+### 6. Cargar datos iniciales
 
 ```bash
 python load_db.py
